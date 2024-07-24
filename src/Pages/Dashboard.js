@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-const Dashboard = () => {
+let Dashboard;
+
+Dashboard = ({ user }) => {
   const users = ['Alice', 'Bob', 'Charlie', 'Dave'];
 
   const [tasks, setTasks] = useState({
@@ -86,6 +88,7 @@ const Dashboard = () => {
     <div className="sm:p-1 md:p-4 w-full">
       <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
       <div className="flex justify-between items-center mb-6">
+      <p className="text-lg mb-6">Hello, {user ? user.email.split('@')[0] : 'Guest'}!</p>
         <h2 className="text-lg font-bold">Task Management</h2>
         <button onClick={handleAddTaskClick} className="bg-blue-500 text-white px-4 py-2 rounded">Add Task</button>
       </div>
@@ -117,7 +120,7 @@ const Dashboard = () => {
 
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-96">
+          <div className="bg-white rounded-lg shadow-lg p-6 sm:[100%] md:w-[50%]">
             <h2 className="text-xl font-bold mb-4">Add New Task</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">

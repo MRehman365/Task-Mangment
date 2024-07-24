@@ -7,7 +7,7 @@ import { BsListCheck } from 'react-icons/bs';
 import { IoIosNotificationsOutline } from 'react-icons/io';
 import { FiMoon, FiMenu } from 'react-icons/fi';
 
-const Sidebar = ({ isOpen, onToggleSidebar }) => {
+const Sidebar = ({ isOpen, onToggleSidebar, isLoggedIn, onLogout }) => {
   return (
     <>
       <div className={`fixed inset-0 z-40 lg:hidden ${isOpen ? 'block' : 'hidden'}`} onClick={onToggleSidebar}></div>
@@ -64,9 +64,15 @@ const Sidebar = ({ isOpen, onToggleSidebar }) => {
           <span>Turn light off</span>
         </div>
         <ul>
-          <li className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
-            <Link to="/login">Login</Link>
-          </li>
+          {isLoggedIn ? (
+            <li className="flex items-center p-4 hover:bg-gray-100 cursor-pointer" onClick={onLogout}>
+              <span>Logout</span>
+            </li>
+          ) : (
+            <li className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
+              <Link to="/login">Login</Link>
+            </li>
+          )}
         </ul>
       </div>
       <button className="fixed top-4 right-4 lg:hidden text-3xl z-50" onClick={onToggleSidebar}>
