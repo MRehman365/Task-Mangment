@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { CiCalendar } from "react-icons/ci";
 
 const TaskList = () => {
-  const users = ['Alice', 'Bob', 'Charlie', 'Dave'];
 
   const [tasks, setTasks] = useState({
     todo: [
